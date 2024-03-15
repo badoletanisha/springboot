@@ -1,0 +1,29 @@
+package com.java.springboot.productproject.controller;
+
+import java.util.List;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.java.springboot.productproject.entity.Product;
+import com.java.springboot.productproject.utility.ResponseStructure;
+
+@RestController
+public class ProductController {
+	
+	public ResponseEntity<ResponseStructure<Product>> saveProduct(Product product){
+		return null;}
+	
+	public ResponseEntity<ResponseStructure<Product>> updateProduct(int productId,int productCost){
+		return null;}
+	
+	public ResponseEntity<ResponseStructure<Product>> deleteProduct(int productId){
+		return null;}
+	
+	public ResponseEntity<ResponseStructure<Product>> getByIdProduct(int productId){
+		return null;}
+
+	public ResponseEntity<ResponseStructure<List<Product>>> findAllProduct(){
+		return null;}
+	
+}

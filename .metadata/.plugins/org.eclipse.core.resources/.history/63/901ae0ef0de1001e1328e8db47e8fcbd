@@ -1,0 +1,11 @@
+package com.java.springboot.productproject.service;
+
+import com.java.springboot.productproject.entity.Product;
+
+public interface ProductService {
+	public Product saveProduct(Product product);
+	public Product deleteProduct(int productName);
+	public Product getByIdProduct(int productId);
+	public Product findAllProduct( );
+	Product updateProduct(int productCost, int productId);
+}

@@ -1,0 +1,18 @@
+package com.java.springboot.productproject.utility;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestController;
+@RestController
+public class ApplicationHandler {
+@ExceptionHandler
+public ResponseEntity<ErrorStructure<String>> SaveProductNotFoundException(saveProductNotFoundException ex){
+	ErrorStructure<String> errorStructure = new ErrorStructure<>();
+	errorStructure.setStatuscode(HttpStatus.NOT_FOUND.value());
+	errorStructure.setErrorMessage(ex.getMessage());
+	errorStructure.setData("Task not Created Succsefully");
+	return new ResponseEntity<ErrorStructure<String>>(errorStructure, HttpStatus.NOT_FOUND);
+
+}
+}

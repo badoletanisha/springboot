@@ -1,0 +1,5 @@
+package com.java.springboot.productproject.service;
+
+public interface ProductService {
+
+}

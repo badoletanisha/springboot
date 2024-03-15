@@ -1,0 +1,73 @@
+package com.java.springboot.productprojectserviceimpl;
+
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Service;
+
+import com.java.springboot.productproject.entity.Product;
+import com.java.springboot.productproject.repository.ProductRepository;
+import com.java.springboot.productproject.service.ProductService;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+
+	@Autowired
+	private ProductRepository productRepository;
+
+
+
+	@Override
+	public Product saveProduct(Product product) {
+		Product product1 = productRepository.save(product);
+		return product1;
+	}
+
+	@Override
+	public Product updateProduct(int productId,int productCost) {
+		Optional<Product> optional = productRepository.findById(productId);
+		if(optional.isPresent()) {
+			Product exitProduct = optional.get();
+			exitProduct.setProductId(exitProduct.getProductId());
+			exitProduct.setProductCost(exitProduct.getProductCost());
+			return productRepository.save(exitProduct);
+		}else {
+			return null;
+		}
+
+
+	}
+
+	@Override
+	public Product deleteProduct(int productId) {
+		Optional<Product> optional = productRepository.findById(productId);
+		if(optional.isPresent()) {
+			Product product = optional.get();
+			productRepository.delete(product);
+			return product;
+		}
+		return null;
+
+	}
+
+	@Override
+	public Product getByIdProduct(int productId) {
+		Optional<Product> optional = productRepository.findById(productId);
+		if(optional.isPresent()) {
+			return	optional.get();
+
+		}
+		return null;
+	}
+
+	@Override
+	public Product findAllProduct() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+}

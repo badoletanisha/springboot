@@ -1,0 +1,14 @@
+package com.java.springboot.productproject.service;
+
+import org.springframework.http.ResponseEntity;
+
+import com.java.springboot.productproject.entity.Product;
+import com.java.springboot.productproject.utility.ResponseStructure;
+
+public interface ProductService {
+	public ResponseEntity<ResponseStructure<Product>> saveProduct(Product product);
+	public Product getByIdProduct(int productId);
+	public ResponseStructure<Product> findAllProduct( );
+	Product updateProduct(int productCost, int productId);
+	Product deleteProduct(int productId);
+}

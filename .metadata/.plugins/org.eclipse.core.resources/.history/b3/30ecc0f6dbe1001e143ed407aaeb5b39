@@ -1,0 +1,26 @@
+package com.java.springboot.productproject.serviceimpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+
+import com.java.springboot.productproject.entity.Product;
+import com.java.springboot.productproject.repository.ProductRepository;
+import com.java.springboot.productproject.service.ProductService;
+import com.java.springboot.productproject.utility.ResponseStructure;
+
+public class ProductServiceImpl implements ProductService{
+
+	private ProductRepository productRepository;
+	@Autowired
+	private ResponseStructure<Product> structure;
+
+	@Override
+	public ResponseEntity<ResponseStructure<Product>> updateProduct(int productId, Product product) {
+		return productRepository.findById(productId).map(exProduct -> {
+			pr
+		})
+	}
+
+	
+	
+}

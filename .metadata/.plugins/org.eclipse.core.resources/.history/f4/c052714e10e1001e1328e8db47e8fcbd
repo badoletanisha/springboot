@@ -1,0 +1,5 @@
+package com.java.springboot.productproject.utility;
+
+public class ResponseStructure<T> {
+
+}

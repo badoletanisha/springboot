@@ -1,0 +1,18 @@
+package com.java.springboot.productproject.utility;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+
+import com.java.springboot.task_manager.exception.TaskNotCreatedException;
+import com.java.springboot.task_manager.utility.ErrorStructure;
+
+public class ErrorStructure<T> {
+	public ResponseEntity<ErrorStructure<String>> taskNotCreatedException(TaskNotCreatedException ex){
+		ErrorStructure<String> errorStructure = new ErrorStructure<>();
+		errorStructure.setStatuscode(HttpStatus.NOT_FOUND.value());
+		errorStructure.setErrorMessage(ex.getMessage());
+		errorStructure.setErrordata("Task not Created Succsefully");
+		return new ResponseEntity<ErrorStructure<String>>(errorStructure, HttpStatus.NOT_FOUND);
+
+	}
+}

@@ -1,0 +1,19 @@
+package com.java.springboot.productproject.serviceimpl;
+
+import org.springframework.http.ResponseEntity;
+
+import com.java.springboot.productproject.entity.Product;
+import com.java.springboot.productproject.service.ProductService;
+import com.java.springboot.productproject.utility.ResponseStructure;
+
+public class ProductServiceImpl implements ProductService{
+
+	@Override
+	public ResponseEntity<ResponseStructure<Product>> findProduct(int productId) {
+		
+		return null;
+	}
+
+	
+	
+}

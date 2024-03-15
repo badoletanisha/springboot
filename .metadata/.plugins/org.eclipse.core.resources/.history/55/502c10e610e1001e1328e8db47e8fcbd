@@ -1,0 +1,85 @@
+package com.java.springboot.productprojectserviceimpl;
+
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.java.springboot.productproject.entity.Product;
+import com.java.springboot.productproject.exception.saveProductNotFoundException;
+import com.java.springboot.productproject.repository.ProductRepository;
+import com.java.springboot.productproject.service.ProductService;
+import com.java.springboot.productproject.utility.ResponseStructure;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+
+	@Autowired
+	private ProductRepository productRepository;
+
+
+
+	@Override
+	
+	public ResponseEntity<ResponseStructure<Product>> saveProduct(Product product) {
+		Product saveProduct = productRepository.save(product);
+		if(saveProduct==null) {
+			throw new saveProductNotFoundException("Failed to add category");
+		}
+		else {
+			ResponseStructure<Product> responseStructure =new ResponseStructure<>();
+			responseStructure.setStatuscode(HttpStatus.CREATED.value());
+			responseStructure.setMessage("category add successfully");
+			responseStructure.setData(saveProduct);		
+			return new ResponseEntity<ResponseStructure<Product>>(responseStructure,HttpStatus.CREATED);
+		}
+	}
+	@Override
+	public Product updateProduct(int productId,int productCost) {
+		Optional<Product> optional = productRepository.findById(productId);
+		if(optional.isPresent()) {
+			Product exitProduct = optional.get();
+			exitProduct.setProductId(exitProduct.getProductId());
+			exitProduct.setProductCost(exitProduct.getProductCost());
+			return productRepository.save(exitProduct);
+		}else {
+			return null;
+		}
+
+
+	}
+
+	@Override
+	public Product deleteProduct(int productId) {
+		Optional<Product> optional = productRepository.findById(productId);
+		if(optional.isPresent()) {
+			Product product = optional.get();
+			productRepository.delete(product);
+			return product;
+		}
+		return null;
+
+	}
+
+	@Override
+	public Product getByIdProduct(int productId) {
+		Optional<Product> optional = productRepository.findById(productId);
+		if(optional.isPresent()) {
+			return	optional.get();
+
+		}
+		return null;
+	}
+
+	@Override
+	public Product findAllProduct() {
+		Optional<<Prduct>>optional = productRepository.findAll();
+		return null;
+	}
+
+
+
+}

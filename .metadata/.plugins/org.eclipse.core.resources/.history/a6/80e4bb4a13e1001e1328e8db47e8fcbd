@@ -1,0 +1,15 @@
+package com.java.springboot.productproject.exception;
+
+public class ProductNotUpdatedException extends RuntimeException {
+private String message;
+
+public ProductNotUpdatedException(String message) {
+	super();
+	this.message = message;
+}
+
+public String getMessage() {
+	return message;
+}
+
+}

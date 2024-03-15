@@ -1,0 +1,5 @@
+package com.java.springboot.productproject.exception;
+
+public class saveProductNotFoundException extends Exception {
+
+}
